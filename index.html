@@ -10,492 +10,543 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Adriano Carvalho</title>
+    <meta name="description" content="Portfolio de Adriano Carvalho - Tech Lead e Engenheiro de Software.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Adriano Carvalho // Software Engineer</title>
+
+    <!-- aplica o tema antes da primeira pintura para evitar flash de cor errada -->
+    <script>
+        (function () {
+            var stored = null;
+            try { stored = localStorage.getItem('theme'); } catch (e) { }
+            var system = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', stored || system);
+        })();
+    </script>
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
 </head>
 
 <body>
 
-    <!--header design-->
-    <header>
-        <a href="#" class="logo"> <img src="img/logo.png" height="80px" style="padding-left: 30px; padding-top: 5px;"> </a>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
 
+    <!--header: barra de abas de editor-->
+    <header>
         <ul class="navlist">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About me</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experiences</a></li>
-            <li><a href="#services">Skills</a></li>
+            <li><a href="#home"><i class="bx bx-terminal"></i>home.sh</a></li>
+            <li><a href="#about"><i class="bx bx-user"></i>about.md</a></li>
+            <li><a href="#education"><i class="bx bx-book"></i>education.json</a></li>
+            <li><a href="#experience"><i class="bx bx-briefcase"></i>experience.ts</a></li>
+            <li><a href="#services"><i class="bx bx-chip"></i>skills.yml</a></li>
         </ul>
 
-        <div class="bx bx-menu" id="menu-icon"></div>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar tema claro/escuro"
+            title="Alternar tema">
+            <svg class="icon-light" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+            </svg>
+            <svg class="icon-dark" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+        </button>
+
+        <button id="menu-icon" type="button" aria-label="Abrir menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+        </button>
     </header>
 
-    <!--home section design-->
+    <!--home: janela de terminal-->
     <section class="home" id="home">
-        <div class="home-div">
-            <div class="wave-container">
-                <div class="wave" id="wave1"></div>
-                <div class="wave" id="wave2"></div>
-                <div class="wave" id="wave3"></div>
-                <div class="wave" id="wave4"></div>
+        <div class="terminal">
+            <div class="win-bar">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span class="win-file">adriano@portfolio: ~</span>
+                <span class="win-meta">zsh</span>
             </div>
-            <div class="home-text">
-                <div class="whatsapp-message">
-                    <span lass="whatsapp-text" style="color: white;">Hello! 😃<span class="wave-emoji">👋</span></span>
-                </div>
-                <h3></h3>
+            <div class="term-body">
+                <p class="term-line"><span class="prompt">➜</span> <span class="cmd">whoami</span></p>
                 <h1>Adriano Carvalho</h1>
-                <h3>Software<span> Engineer</span></h3>
+
+                <p class="term-line"><span class="prompt">➜</span> <span class="cmd">cat role.txt</span></p>
+                <h3>Tech Lead <span class="tok-op">&amp;</span> Software <span>Engineer</span></h3>
+
+                <p class="comment">// construindo a plataforma de crédito e negociação da Majors Asset</p>
+                <p class="comment">// FIDC · AWS · micro-serviços · engenharia de dados · IA</p>
+
+                <p class="term-line"><span class="prompt">➜</span> <span class="cmd" id="typed"></span><span
+                        class="caret"></span></p>
+
                 <div class="button">
-                    <a href="https://api.whatsapp.com/send/?phone=5519983123425" target="_blank" class="btn" style="color: white;">Entrar em Contato!</a>
+                    <a href="https://api.whatsapp.com/send/?phone=5519983123425" target="_blank" rel="noopener"
+                        class="btn"><i class="bx bx-play"></i> ./entrar-em-contato.sh</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!--about section design-->
+    <!--about-->
     <section class="about" id="about">
         <div class="about-img">
-            <img src="https://avatars.githubusercontent.com/u/59294941?v=4">
+            <div class="avatar-frame">
+                <img src="https://avatars.githubusercontent.com/u/59294941?v=4" alt="Adriano Carvalho">
+            </div>
         </div>
 
         <div class="about-text">
+            <span class="section-tag">// about</span>
             <h2>About <span>Me</span></h2>
             <h4>Bringing solutions through technology.</h4>
-            <p>&bull; 4+ year experience</p>
-            <p>&bull; Graduating in Information Systems at USP.</p>
-            <p>&bull; Microservices Architecture and AWS/Azure DevOps</p>
-            <p>&bull; Advanced English Level</p>
+
+            <ul class="kv-list">
+                <li><span class="k">experience</span><span class="sep">:</span><span class="v">"4+ years in software
+                        engineering"</span></li>
+                <li><span class="k">role</span><span class="sep">:</span><span class="v">"Tech Lead @ Majors Asset
+                        (FIDC / capital markets)"</span></li>
+                <li><span class="k">education</span><span class="sep">:</span><span class="v">"Information Systems @
+                        USP"</span></li>
+                <li><span class="k">focus</span><span class="sep">:</span><span class="v">"Microservices, AWS, Data
+                        Engineering (ETL)"</span></li>
+                <li><span class="k">ai</span><span class="sep">:</span><span class="v">"LLM agents with MCP and
+                        RAG"</span></li>
+                <li><span class="k">languages</span><span class="sep">:</span><span class="v">"pt-BR (native), en
+                        (advanced)"</span></li>
+            </ul>
 
             <div class="socials">
-                <a href="https://www.linkedin.com/in/adriano-silva-carvalho/" target="_blank" class="btn-socials"><span><i class="bx bxl-linkedin" style="color: white;"></i></span></a>
-                <a href="https://github.com/driicarvalho7" target="_blank" class="btn-socials"><span><i class="bx bxl-github" style="color: white;"></i></a>
-                <a href="https://www.instagram.com/driicarvalho7/" target="_blank" class="btn-socials"><span><i class="bx bxl-instagram" style="color: white;"></i></i></a>
+                <a href="https://www.linkedin.com/in/adriano-silva-carvalho/" target="_blank" rel="noopener"
+                    class="btn-socials" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i><span>linkedin</span></a>
+                <a href="https://github.com/eu-adrianocarvalho" target="_blank" rel="noopener" class="btn-socials"
+                    aria-label="GitHub"><i class="bx bxl-github"></i><span>github</span></a>
             </div>
         </div>
     </section>
 
+    <!--education-->
     <section class="education" id="education">
         <div class="main-text">
-            <p>Academic</p>
+            <span class="section-tag">// academic</span>
             <h2><span>Education</span></h2>
         </div>
 
         <div class="timeline">
-
-            <div class="container-education">
-                <img src="https://logodownload.org/wp-content/uploads/2014/12/usp-logo-0.png">
-                <div class="text-box-inverse">
-                    <small>2022 - 2026</small>
-                    <h5><span><b>University of São Paulo (USP)</b></span></h5>
-                    <p><span>Bachelor Degree</span> in Information Systems at <a href="https://www.icmc.usp.br/"><span>ICMC</span></a></p>
+            <div class="window">
+                <div class="win-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="win-file">usp.json</span>
+                    <span class="win-meta">2022 — 2026</span>
+                </div>
+                <div class="win-body">
+                    <h5>University of São Paulo (USP)</h5>
+                    <p class="comment">// Instituto de Ciências Matemáticas e Computação — São Carlos, SP</p>
+                    <p><span class="tok-kw">Bachelor Degree</span> in Information Systems at <a
+                            href="https://www.icmc.usp.br/" target="_blank" rel="noopener">ICMC</a></p>
                 </div>
             </div>
 
-            <div class="container-education">
-                <img src="img/etec.png">
-                <div class="text-box-inverse">
-                    <small>2019 - 2021</small>
-                    <h5><span><b>ETEC Ferrúcio Humberto Gazzetta</b></span></h5>
-                    <p><span>Technical Degree</span> in Systems Development</p>
+            <div class="window">
+                <div class="win-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="win-file">etec.json</span>
+                    <span class="win-meta">2019 — 2021</span>
+                </div>
+                <div class="win-body">
+                    <h5>ETEC Ferrúcio Humberto Gazzetta</h5>
+                    <p class="comment">// Nova Odessa, SP</p>
+                    <p><span class="tok-kw">Technical Degree</span> in Systems Development</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!--experience section design-->
+    <!--experience-->
     <section class="experience" id="experience">
         <div class="main-text">
-            <p>Professional</p>
+            <span class="section-tag">// professional</span>
             <h2><span>Work</span> Experiences</h2>
         </div>
 
         <div class="timeline">
 
-            <div class="container">
-                <div class="text-box">
-                    <h5><span><b>Majors Asset</b></span></h5>
-                    <h5>Software Engineer</h5>
-                    <small>02/2025 - Present</small>
-                    <p>
-                        At Majors Asset, an Investment Fund Manager with a Startup and Technology DNA focused on FIDC for Consigned Credit and FGTS, my responsibility lies in negotiating credit rights assignments (CCB's), validating eligibility criteria, collateral, and registration for 100% of the assets, in addition to their portfolio management.
-                    </p>
-                    <p>
-                        Therefore, we use Docker microservices with Python, PostgreSQL, ClickHouse, SQS, Consumer, and Redis.
-                    </p>
-                    <p>
-                       Furthermore, we integrate with various third-party services, such as the fund's accounts for viewing balances and statements with banks like Itaú and Qi Tech, as well as purchases, signatures, and transfers with DTVMs.
-                    </p>
+            <div class="window">
+                <div class="win-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="win-file">majors-asset.py</span>
+                    <span class="win-meta">01/2025 — present · 1y 8m</span>
+                </div>
+                <div class="win-body numbered">
+                    <h5>Majors Asset <span class="badge">São Paulo, SP</span></h5>
+                    <p>Investment Fund Manager with a Startup and Technology DNA, focused on FIDCs (Credit Rights
+                        Investment Funds) for Payroll Loans and FGTS. I am responsible for building the proprietary
+                        platform that supports the whole credit portfolio operation, from the originator to the
+                        shareholder, on an AWS microservices architecture.</p>
+
+                    <div class="role">
+                        <h6><span class="tok-kw">role</span> Tech Lead <span class="role-date">07/2026 — present · 2
+                                months</span></h6>
+                        <p>Engineering team management: task definition and prioritization, delivery planning,
+                            one-on-ones and code review.</p>
+                        <p>Product architecture evolution: API standardization and system adjustments to scale the
+                            solution to new funds and clients (multi-tenant, security and regulatory traceability).</p>
+                        <p>Technical roadmap and architecture decisions (ADRs): data strategy, observability, SLAs and
+                            AWS cost optimization (FinOps).</p>
+                        <p>Interface between engineering and the structuring, risk and operations teams, translating
+                            FIDC market rules into technical requirements.</p>
+                    </div>
+
+                    <div class="role">
+                        <h6><span class="tok-kw">role</span> Senior Software Engineer <span class="role-date">07/2025 —
+                                06/2026 · 1 year</span></h6>
+                        <p>End-to-end ownership of every system in the company: architecture, development, deployment
+                            and support.</p>
+                        <p>Accrual engine: daily calculation of the credit rights curve, the basis for the fund's
+                            pricing and result assessment.</p>
+                        <p>Loan loss provision engine (PDD): risk classification by delinquency bucket and automatic
+                            provisioning, with history versioned by reference date.</p>
+                        <p>INSS payroll transfer automation: reconciliation of transfer files against the portfolio,
+                            break detection and settlement to each participant.</p>
+                        <p>Data engineering and analytics: ETL pipelines ingesting data from originators, custodians and
+                            fund accounts into an Amazon S3 data lake and a ClickHouse warehouse, with
+                            raw/staging/analytics layers, incremental loads and quality tests, feeding portfolio
+                            performance, delinquency and concentration dashboards.</p>
+                        <p>Artificial Intelligence: AI plugin embedded in the internal coding agents, agent management
+                            through MCP (Model Context Protocol) and RAG over the fund's document base (contracts,
+                            regulations and amendments) with vector indexing.</p>
+                        <p>API and file integrations with DTVMs, banking partners, originators and registrars, handling
+                            reprocessing, idempotency and divergence reconciliation.</p>
+                        <p>Performance tuning with parallelism and multithreading, workload partitioning and complex
+                            join query rewriting, reducing the portfolio's daily closing time.</p>
+                        <p>Technical mentoring of 1 junior developer: code review, pairing and definition of project
+                            standards (Clean Code, SOLID and automated tests with Pytest).</p>
+                    </div>
+
+                    <div class="role">
+                        <h6><span class="tok-kw">role</span> Mid-level Software Engineer <span class="role-date">01/2025
+                                — 06/2025 · 6 months</span></h6>
+                        <p>Development of the Trade (negotiation) microservice, responsible for the assignment of credit
+                            rights (CCBs): automated validation of eligibility, collateral and registration criteria on
+                            100% of the traded assets, with an audit trail for every decision.</p>
+                        <p>Stack: Python, PostgreSQL and Docker, deployed on AWS ECS/ECR with Amazon SQS messaging to
+                            process assignment batches asynchronously; ElastiCache (Redis) for caching eligibility
+                            parameters.</p>
+                        <p>Multithreaded processing of the remittance and return files, validating tens of thousands of
+                            CCBs per batch without blocking the trading pipeline.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="text-box">
-                    <h5><span><b>Menestys Asset</b></span></h5>
-                    <h5>Software Engineer</h5>
-                    <small>01/2025 - 01/2025 (1 month)</small>
-                    <p>
-                        At Menestys Asset, I had the opportunity to combine two areas of interest: Technology and the Financial Market. I was responsible for developing two microservices in Python:
-                    </p>
-                    <p>
-                        &bull; To query the daily value of post-fixed indices (DI, IPCA, and IGPM).
-                    </p>
-                    <p>
-                        &bull; To manage the negotiation of fund shares (FIC FIDC) and national treasury bonds (LFT).
-                    </p>
-                    <p>
-                       The experience taught me a lot about handling diverse systems, integrations, and asynchronous process communication, using Amazon SQS messaging and Amazon ECS for Docker container orchestration.
-                    </p>
+            <div class="window">
+                <div class="win-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="win-file">cognimind.php</span>
+                    <span class="win-meta">07/2024 — 12/2024 · 6m</span>
+                </div>
+                <div class="win-body numbered">
+                    <h5>Cognimind Soluções em TI <span class="badge">São Paulo, SP</span></h5>
+                    <p class="comment">// Mid-level Software Engineer</p>
+                    <p>Development of custom corporate systems for clients from different sectors, with end-to-end
+                        responsibility (requirements gathering, development, deployment and support).</p>
+                    <p>Executa Trade Marketing: Financial Management System integrated with Bradesco Bank via FEBRABAN
+                        CNAB 240, automating remittance/return and receivables reconciliation.</p>
+                    <p>LMS Platform (Learning Management System): corporate training platform built with Laravel (PHP),
+                        covering learning tracks, class management, assessments and certificate issuing, with role-based
+                        access control and progress reports.</p>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="text-box">
-                    <h5><span><b>ASC Digital</b></span></h5>
-                    <h5>Individual Microentrepreneur (MEI)</h5>
-                    <small>08/2023 - 12/2024 (1 year and 6 months)</small>
-                    <p>
-                        ASC Digital was a Software House founded by me, focusing on the development of Enterprise Resource Planning (ERP) systems for various clients across different economic sectors, including:
-                    </p>
-                    <p>&bull; Executa Trade Marketing: Financial Management System integrating with Bradesco Bank via FEBRABAN CNAB 240.</p>
-                    <p>&bull; Dealercont: Sales and Commission Management System.</p>
-                    <p>&bull; Wise RH: Human Resources Management System.</p>
-                    <p>&bull; DPA Brasil Nestlé: CRM and Document Management System.</p>
-                    <p>&bull; DNA Cidadania: Document and Genealogical Tree Management System.</p>
-                    <p>
-                        During this period, my contact with diverse systems and technologies boosted my knowledge and professional development, such as:
-                    </p>
-                    <p>
-                        &bull; Developing software projects using monolithic and microservices architectures, with integrated deployment on clouds like AWS and Azure, and Internet Information Services (IIS), always adhering to clean code architecture and CI/CD deployment.
-                    </p>
-                     <p>
-                        &bull; Modeling databases in PostgreSQL, MySQL, and SQL Server, always using database versioning via Migrations to meet business rules.
-                    </p>
-                     <p>
-                        &bull; Full-stack development of Webapps:
-                    </p>
-                    <p>
-                       - Web APIs in Python, C# .NET 8, and Java Spring Boot, always ensuring security with JWT for Authentication and Authorization.
-                    </p>
-                     <p>
-                       - Front End using React JS, Blazor, Stencil & Ionic, Angular, and other frameworks.
-                    </p>
+            <div class="window">
+                <div class="win-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="win-file">bws-tecnologia.cs</span>
+                    <span class="win-meta">07/2023 — 06/2024 · 1y</span>
+                </div>
+                <div class="win-body numbered">
+                    <h5>BWS Tecnologia <span class="tok-op">|</span> Fábrica de Software <span
+                            class="badge">Remote</span></h5>
+                    <p class="comment">// Junior Software Engineer</p>
+                    <p>Full-stack development of Enterprise Resource Planning (ERP) systems for clients across different
+                        economic sectors, including: Dealercont (Sales and Commission Management), Wise RH (Human
+                        Resources), DPA Brasil Nestlé (CRM and Documents) and DNA Cidadania (Documents and Genealogical
+                        Tree).</p>
+                    <p>Developing software projects using monolithic and microservices architectures, with integrated
+                        deployment on clouds like AWS and Azure, and Internet Information Services (IIS), always
+                        adhering to clean code architecture and CI/CD deployment.</p>
+                    <p>Modeling databases in PostgreSQL, MySQL and SQL Server, always using database versioning via
+                        Migrations to meet business rules.</p>
+                    <p>Web APIs in Python, C# .NET 8 and Java Spring Boot, always ensuring security with JWT for
+                        Authentication and Authorization.</p>
+                    <p>Front End using React JS, Blazor, Stencil &amp; Ionic, Angular and other frameworks.</p>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="text-box">
-                    <h5><span><b>Shielder Tecnologia LTDA</b></span></h5>
-                    <h5>Software Engineering Intern</h5>
-                    <small>08/2022 - 08/2023 (1 year)</small>
-                    <p>
-                        My first contact with systems in the job market, I worked on several projects such as:
-                    </p>
-                    <p>
-                        &bull; Maintenance and development of new features in the Android Mobile application (Kotlin).
-                    </p>
-                    <p>
-                        &bull; Development of an internal SDK in Python for pattern recognition in images (Car Plates and Human Faces).
-                    </p>
-                    <p>
-                        &bull; Development of a Windows desktop system using C#, utilizing Asterisk VOIP communication.
-                    </p>
+            <div class="window">
+                <div class="win-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="win-file">shielder.kt</span>
+                    <span class="win-meta">08/2022 — 08/2023 · 1y</span>
+                </div>
+                <div class="win-body numbered">
+                    <h5>Shielder Tecnologia LTDA <span class="badge">São Carlos, SP</span></h5>
+                    <p class="comment">// Software Engineering Intern</p>
+                    <p>Maintenance and development of new features in the Android Mobile application (Kotlin).</p>
+                    <p>Development of an internal SDK in Python for pattern recognition in images (Car Plates and Human
+                        Faces).</p>
+                    <p>Development of a Windows desktop system using C#, utilizing Asterisk VOIP communication.</p>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="text-box">
-                    <h5><span><b>ICMC Júnior</b></span></h5>
-                    <h5>Legal and Financial Member</h5>
-                    <small>06/2022 – 12/2022 (6 months)</small>
-                    <p>
-                        A Junior Enterprise at the Institute of Mathematical and Computer Sciences (ICMC) of USP São Carlos, with over 30 years of market presence and a reference in computing and statistics projects.
-                    </p>
-                    <p>
-                        I worked on the Legal and Financial team, being responsible for the accounting area.
-                    </p>
-                    <p>Main functions:</p>
-                    <p>&bull; Structuring of cash flow, assets, and liabilities.</p>
-                    <p>&bull; Construction of Income Statements (DREs).</p>
+            <div class="window">
+                <div class="win-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="win-file">icmc-junior.js</span>
+                    <span class="win-meta">06/2022 — 12/2022 · 6m</span>
+                </div>
+                <div class="win-body numbered">
+                    <h5>ICMC Júnior <span class="badge">São Carlos, SP</span></h5>
+                    <p class="comment">// Tech Member</p>
+                    <p>Junior Enterprise at the Institute of Mathematical and Computer Sciences (ICMC) of USP São
+                        Carlos. I worked on the tech team, taking part in the full cycle of a project delivered to a
+                        client.</p>
+                    <p>Development and delivery of a mobile application in React Native (iOS and Android), with
+                        navigation, API consumption and user authentication.</p>
+                    <p>Development of the REST API in Node.js with Express, including database modeling, JWT
+                        authentication and environment deployment.</p>
+                    <p>Version control with Git and squad work using agile methodology (Scrum), from requirements
+                        gathering to the final delivery.</p>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- portfolio section design
-    <section class="portfolio" id="portfolio">
-        <div class="main-text">
-            <p>Portfolio</p>
-            <h2>Clients <span>Projects</span></h2>
-        </div>
-
-        <div class="portfolio-content">
-
-            <div class="row">
-                <img src="img/subcontrol.png">
-                <div class="layer">
-                    <h5 style="color: white;">Sub Control</h5>
-                    <p style="color: white;">A project developed during the Web/Mobile Development subject, is a Web application built in React Native with API's in Node JS with NoSQL MongoDB database.</p>
-                    <a href="https://github.com/driicarvalho7/SubControl_Web    "
-                        target="_blank"><i class="bx bx-link-external" style="color: white;"></i></a>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p1.png">
-                <div class="layer">
-                    <h5 style="color: white;">Executa Trade Marketing</h5>
-                    <p style="color: white;">System for company financial control, entry of accounts payable and receivable, billing forecast and export of spreadsheets. Server built in ASP NET Core, Client in React, Database in MySQL and published on Azure.</p>
-                    <a href="https://executatrade.com.br/"
-                        target="_blank"><i class="bx bx-link-external" style="color: white;"></i></a>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p4.png">
-                <div class="layer">
-                    <h5 style="color: white;">Dealercont</h5>
-                    <p style="color: white;">This is the dealership's commission portal Dealercont, a system in SAAS format that integrates with Microworkcloud APIs. Client developed in Blazor, Server in ASP NET Core, databases in PostgreSQL and deployed in Azure.</p>
-                    <a href="https://dealercont.com.br/"
-                        target="_blank"><i class="bx bx-link-external" style="color: white;"></i></a>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p6.png">
-                <div class="layer">
-                    <h5 style="color: white;">Wise RH</h5>
-                    <p style="color: white;">I worked for 8 months building the employee portal, a SAAS-style system for HR management. Client in Ionic & Stencil, Server in ASP NET Core consuming the API that was made available in SOAP and local deployment on an IIS Server.</p>
-                        <a href="https://www.wiserh.com.br/"
-                            target="_blank"><i class="bx bx-link-external" style="color: white;"></i></a>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p7.png">
-                <div class="layer">
-                    <h5 style="color: white;">Executa Academy</h5>
-                    <p style="color: white;">An LMS system in SAAS format, currently with 3.100 simultaneous users. Built with the Laravel PHP framework, MySQL databases and implemented on Azure. I didn't work on development, I do sprints of specific corrections to improve the system.</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p2.png">
-                <div class="layer">
-                    <h5 style="color: white;">Secrets Professional</h5>
-                    <p style="color: white;">This system aimed to help the Secrets Professional laboratory create mandatory documents for exporting products. Client built in React and Served in ASP NET Core, MySQL databases implemented in a Local IIS.</p>
-                    <a href="https://secretsprofessional.com.br/"
-                        target="_blank"><i class="bx bx-link-external" style="color: white;"></i></a>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p3.png">
-                <div class="layer">
-                    <h5 style="color: white;">DPA Brasil</h5>
-                    <p style="color: white;">DPA files, this system is intended to be a "One Drive" exclusive to DPA (Nestlé). Server built on ASP NET Core, implementing Azure Blob Storage. Client in React, database in MySQL and deploy to Azure.</p>
-                    <a href="https://www.dpabrasil.com.br/"
-                        target="_blank"><i class="bx bx-link-external" style="color: white;"></i></a>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p8.png">
-                <div class="layer">
-                    <h5 style="color: white;">DPA Brasil</h5>
-                    <p style="color: white;">The distributor portal is an internal system that Executa Trade uses to manage projects together with DPA (Nestlé). I worked on improving database queries and integrations with Azure Blob Storage.</p>
-                    <a href="https://www.dpabrasil.com.br/"
-                        target="_blank"><i class="bx bx-link-external" style="color: white;"></i></a>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p5.png">
-                <div class="layer">
-                    <h5 style="color: white;">DNA Cidadania</h5>
-                    <p style="color: white;">I worked on sprints for corrections and updates to the system. Built in Ionic & Stencil, Server in ASP NET Core, database in SQL Server and doploy in Azure with Docker.</p>
-                    <a href="https://www.dnacidadania.com.br/"
-                        target="_blank"><i class="bx bx-link-external" style="color: white;"></i></a>
-                </div>
-            </div>
-
-            <div class="row">
-                <img src="img/p10.png">
-                <div class="layer">
-                    <h5 style="color: white;">Monolithic Architecture</h5>
-                    <p style="color: white;">This is the monolithic structure to create all these applications, I specialize in creating Web APIs in the .NET environment, connecting to databases with Entity Framework and publishing to Azure.</p>
-                </div>
-            </div>
-    </section>
--->
-
-    <!--about section design-->
+    <!--skills-->
     <section class="services" id="services">
         <div class="main-text">
-            <p>What I am Good In</p>
+            <span class="section-tag">// what I am good in</span>
             <h2><span>My</span> Skills</h2>
         </div>
 
-        <div class="services-content">
-            <div class="box">
-                <div class="s-icons">
-                    <img src="img/c-sharp-c.svg" height="50px">
-                </div>
-                <h3>C#</h3>
+        <div class="skills-shell">
+            <div class="win-bar">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span class="win-file">skills.yml</span>
+                <span class="win-meta"><span id="skill-count">0</span> entries</span>
             </div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <img src="img/dotnet.svg" height="50px">
-                </div>
-                <h3>ASP .NET 9</h3>
+            <div class="skills-filters" id="skills-filters">
+                <button class="chip is-active" type="button" data-filter="all">all</button>
+                <button class="chip" type="button" data-filter="Language">languages</button>
+                <button class="chip" type="button" data-filter="Backend">backend</button>
+                <button class="chip" type="button" data-filter="Frontend">frontend</button>
+                <button class="chip" type="button" data-filter="Cloud">cloud</button>
+                <button class="chip" type="button" data-filter="DevOps">devops</button>
+                <button class="chip" type="button" data-filter="Data">data</button>
+                <button class="chip" type="button" data-filter="AI">ai</button>
+                <button class="chip" type="button" data-filter="Architecture">architecture</button>
+                <button class="chip" type="button" data-filter="IDE">ide &amp; tools</button>
             </div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <img src="img/efcore.png" height="80px">
-                </div>
-                <h3>Entity Framework</h3>
-            </div>
+            <div class="skills-grid" id="skills-grid" role="list">
+                <!-- Languages -->
+                <div class="skill" role="listitem" tabindex="0" data-name="Python" data-abbr="Py" data-cat="Language"><i
+                        class="devicon-python-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="C#" data-abbr="C#" data-cat="Language"><i
+                        class="devicon-csharp-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Java" data-abbr="Jv" data-cat="Language"><i
+                        class="devicon-java-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="TypeScript" data-abbr="TS"
+                    data-cat="Language"><i class="devicon-typescript-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="JavaScript" data-abbr="JS"
+                    data-cat="Language"><i class="devicon-javascript-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="PHP" data-abbr="PHP" data-cat="Language"><i
+                        class="devicon-php-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Kotlin" data-abbr="Kt" data-cat="Language"><i
+                        class="devicon-kotlin-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="SQL" data-abbr="SQL" data-cat="Language"><i
+                        class="bx bx-terminal"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Bash / Shell" data-abbr="Sh"
+                    data-cat="Language"><i class="devicon-bash-plain colored"></i></div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <img src="img/py.svg" height="30px">
-                </div>
-                <h3>Python</h3>
-            </div>
+                <!-- Backend -->
+                <div class="skill" role="listitem" tabindex="0" data-name="ASP.NET Core" data-abbr=".NET"
+                    data-cat="Backend"><i class="devicon-dotnetcore-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Entity Framework Core" data-abbr="EF"
+                    data-cat="Backend"><i class="devicon-dot-net-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Spring Boot" data-abbr="Spr"
+                    data-cat="Backend"><i class="devicon-spring-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Node.js" data-abbr="Node"
+                    data-cat="Backend"><i class="devicon-nodejs-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Express" data-abbr="Ex" data-cat="Backend"><i
+                        class="devicon-express-original"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="FastAPI" data-abbr="API"
+                    data-cat="Backend"><i class="devicon-fastapi-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Laravel" data-abbr="Lv" data-cat="Backend"><i
+                        class="devicon-laravel-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="SQLAlchemy" data-abbr="SA"
+                    data-cat="Backend"><i class="bx bx-link"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="REST API" data-abbr="REST"
+                    data-cat="Backend"><i class="bx bx-code-curly"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="JWT / OAuth" data-abbr="JWT"
+                    data-cat="Backend"><i class="bx bx-key"></i></div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <img src="img/aws.svg" height="30px">
-                </div>
-                <h3>AWS</h3>
-            </div>
+                <!-- Frontend -->
+                <div class="skill" role="listitem" tabindex="0" data-name="React JS" data-abbr="Rct"
+                    data-cat="Frontend"><i class="devicon-react-original colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="React Native" data-abbr="RN"
+                    data-cat="Frontend"><i class="bx bx-mobile-alt"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Next.js" data-abbr="Nx"
+                    data-cat="Frontend"><i class="devicon-nextjs-plain"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Angular" data-abbr="Ng"
+                    data-cat="Frontend"><i class="devicon-angularjs-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Blazor" data-abbr="Blz"
+                    data-cat="Frontend"><i class="devicon-blazor-original colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Stencil &amp; Ionic" data-abbr="Stn"
+                    data-cat="Frontend"><i class="devicon-stencil-original colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="HTML5" data-abbr="H5" data-cat="Frontend"><i
+                        class="devicon-html5-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="CSS3" data-abbr="CSS" data-cat="Frontend"><i
+                        class="devicon-css3-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="WordPress" data-abbr="WP"
+                    data-cat="Frontend"><i class="devicon-wordpress-plain colored"></i></div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <img src="img/azure.svg" height="30px">
-                </div>
-                <h3>Azure</h3>
-            </div>
+                <!-- Cloud -->
+                <div class="skill" role="listitem" tabindex="0" data-name="AWS" data-abbr="AWS" data-cat="Cloud"><i
+                        class="devicon-amazonwebservices-plain-wordmark colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="AWS ECS / ECR / EKS" data-abbr="ECS"
+                    data-cat="Cloud"><i class="bx bx-cube"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="AWS Lambda (Serverless)" data-abbr="Lmb"
+                    data-cat="Cloud"><i class="bx bx-bolt-circle"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Amazon S3" data-abbr="S3"
+                    data-cat="Cloud"><i class="bx bx-bucket"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Amazon SQS / SNS" data-abbr="SQS"
+                    data-cat="Cloud"><i class="bx bx-envelope"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Amazon CloudWatch" data-abbr="CW"
+                    data-cat="Cloud"><i class="bx bx-line-chart"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Microsoft Azure" data-abbr="Az"
+                    data-cat="Cloud"><i class="devicon-azure-plain colored"></i></div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <i class='bx bxl-github'></i>
-                </div>
-                <h3>Github</h3>
-            </div>
+                <!-- DevOps -->
+                <div class="skill" role="listitem" tabindex="0" data-name="Docker" data-abbr="Dkr"
+                    data-cat="DevOps"><i class="devicon-docker-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Kubernetes" data-abbr="K8s"
+                    data-cat="DevOps"><i class="devicon-kubernetes-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="GitHub Actions" data-abbr="GHA"
+                    data-cat="DevOps"><i class="devicon-githubactions-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Azure DevOps" data-abbr="ADO"
+                    data-cat="DevOps"><i class="devicon-azuredevops-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="CI/CD" data-abbr="CI" data-cat="DevOps"><i
+                        class="bx bxs-analyse"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Git" data-abbr="Git" data-cat="DevOps"><i
+                        class="devicon-git-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="GitHub" data-abbr="GH" data-cat="DevOps"><i
+                        class="devicon-github-original"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Linux" data-abbr="Lnx" data-cat="DevOps"><i
+                        class="devicon-linux-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="IIS Server" data-abbr="IIS"
+                    data-cat="DevOps"><i class="bx bx-server"></i></div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <i class='bx bxl-postgresql'></i>
-                </div>
-                <h3>PostgreSQL</h3>
-            </div>
+                <!-- Data -->
+                <div class="skill" role="listitem" tabindex="0" data-name="PostgreSQL" data-abbr="PG"
+                    data-cat="Data"><i class="devicon-postgresql-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="MySQL" data-abbr="My" data-cat="Data"><i
+                        class="devicon-mysql-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="SQL Server" data-abbr="MSSQL"
+                    data-cat="Data"><i class="bx bxs-data"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="MongoDB" data-abbr="Mgo" data-cat="Data"><i
+                        class="devicon-mongodb-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Amazon DynamoDB" data-abbr="Dyn"
+                    data-cat="Data"><i class="devicon-dynamodb-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Redis / ElastiCache" data-abbr="Rds"
+                    data-cat="Data"><i class="devicon-redis-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="ClickHouse" data-abbr="CH"
+                    data-cat="Data"><i class="devicon-clickhouse-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="ETL Pipelines" data-abbr="ETL"
+                    data-cat="Data"><i class="bx bx-transfer-alt"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Data Lake / Warehouse" data-abbr="Lake"
+                    data-cat="Data"><i class="bx bx-layer"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Apache Kafka" data-abbr="Kfk"
+                    data-cat="Data"><i class="devicon-apachekafka-original"></i></div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <i class="bx bxl-docker"></i>
-                </div>
-                <h3>Docker</h3>
-            </div>
+                <!-- AI -->
+                <div class="skill" role="listitem" tabindex="0" data-name="LLM Integration" data-abbr="LLM"
+                    data-cat="AI"><i class="bx bx-brain"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="MCP (Model Context Protocol)" data-abbr="MCP"
+                    data-cat="AI"><i class="bx bx-network-chart"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="RAG &amp; Vector Search" data-abbr="RAG"
+                    data-cat="AI"><i class="bx bx-search-alt"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="AI Agents" data-abbr="Agt" data-cat="AI"><i
+                        class="bx bx-bot"></i></div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <i class="bx bx-selection"></i>
-                </div>
-                <h3>Microservices</h3>
-            </div>
+                <!-- Architecture -->
+                <div class="skill" role="listitem" tabindex="0" data-name="Microservices" data-abbr="µSvc"
+                    data-cat="Architecture"><i class="bx bx-selection"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Clean Code" data-abbr="CC"
+                    data-cat="Architecture"><i class="bx bx-brush"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="SOLID" data-abbr="SLD"
+                    data-cat="Architecture"><i class="bx bx-shape-square"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="MVC" data-abbr="MVC"
+                    data-cat="Architecture"><i class="bx bx-sitemap"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Multithreading" data-abbr="MT"
+                    data-cat="Architecture"><i class="bx bx-git-branch"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Pytest / Unit Testing" data-abbr="Test"
+                    data-cat="Architecture"><i class="devicon-pytest-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Scrum / Agile" data-abbr="Scr"
+                    data-cat="Architecture"><i class="bx bx-loader-circle"></i></div>
 
-            <div class="box">
-                <div class="s-icons">
-                    <i class='bx bx-code-curly'></i>
-                </div>
-                <h3>REST API</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <i class='bx bxl-react'></i>
-                </div>
-                <h3>React JS</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <img src="img/next.svg" height="30px">
-                </div>
-                <h3>Next JS</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <i class='bx bxl-typescript'></i>
-                </div>
-                <h3>Type Script</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <i class="bx bxl-java"></i>
-                </div>
-                <h3>Java</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <i class="bx bxl-spring-boot"></i>
-                </div>
-                <h3>Spring boot</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <i class="bx bx-data"></i>
-                </div>
-                <h3>MySQL</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <i class="bx bx-data"></i>
-                </div>
-                <h3>SQL Server</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <i class="bx bx-loader-circle"></i>
-                </div>
-                <h3>Agile Frameworks (Scrum)</h3>
-            </div>
-
-            <div class="box">
-                <div class="s-icons">
-                    <i class='bx bxs-analyse'></i>
-                </div>
-                <h3>CI/CD</h3>
+                <!-- IDE & Tools -->
+                <div class="skill" role="listitem" tabindex="0" data-name="VS Code" data-abbr="VSC" data-cat="IDE"><i
+                        class="devicon-vscode-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Visual Studio" data-abbr="VS"
+                    data-cat="IDE"><i class="devicon-visualstudio-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="JetBrains Rider" data-abbr="Rdr"
+                    data-cat="IDE"><i class="devicon-rider-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="PyCharm" data-abbr="PyC" data-cat="IDE"><i
+                        class="devicon-pycharm-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="IntelliJ IDEA" data-abbr="IJ"
+                    data-cat="IDE"><i class="devicon-intellij-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="DBeaver" data-abbr="DBv" data-cat="IDE"><i
+                        class="devicon-dbeaver-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="pgAdmin" data-abbr="pgA" data-cat="IDE"><i
+                        class="bx bx-data"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="SQL Server Mgmt Studio" data-abbr="SSMS"
+                    data-cat="IDE"><i class="devicon-ssms-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Postman" data-abbr="Pst" data-cat="IDE"><i
+                        class="devicon-postman-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Insomnia" data-abbr="Ins" data-cat="IDE"><i
+                        class="devicon-insomnia-plain colored"></i></div>
+                <div class="skill" role="listitem" tabindex="0" data-name="Swagger / OpenAPI" data-abbr="Swg"
+                    data-cat="IDE"><i class="devicon-swagger-plain colored"></i></div>
             </div>
         </div>
     </section>
 
-    <!--end section design-->
+    <!--footer-->
     <section class="end">
         <div class="last-text">
-            <p>Adriano Carvalho &#169; 2025.</p>
-            <p>All rights reserved.</p>
+            <p><span class="prompt">➜</span> <span class="cmd">echo</span> <span class="tok-str">"Adriano Carvalho ©
+                    2026 — all rights reserved."</span></p>
+            <p class="comment">// built with HTML, CSS &amp; vanilla JS</p>
         </div>
     </section>
 
     <div id="top">
-        <a href="#home"><i class="bx bx-up-arrow-alt " style="color: white;"></i></a>
+        <a href="#home" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg></a>
     </div>
 
     <!--custom js link-->
